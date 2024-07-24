@@ -1,3 +1,5 @@
+const { users } = require("../router/auth_users");
+
 // Check if a user with the given username already exists
 let doesExist = (username) => {
     // Filter the users array for any user with the same username

@@ -2,6 +2,7 @@ const express = require('express');
 let books = require("./booksdb.js");
 const { authenticatedUser } = require('../utils/authenticateUser.js');
 const jsonwebtoken = require('jsonwebtoken');
+const doesExist = require('../utils/doesExit.js');
 let isValid = require("./auth_users.js").isValid;
 let users = require("./auth_users.js").users;
 const public_users = express.Router();
@@ -15,7 +16,7 @@ public_users.post("/register", (req,res) => {
     return res.status(400).json({ message: "Username or & password required" });
   }
 
-  if (users[username]) {
+  if (doesExist(username)) {
     return res.status(400).json({ message: "Username already exists" })
   }
 
