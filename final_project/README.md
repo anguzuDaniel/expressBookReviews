@@ -53,17 +53,13 @@ Welcome to the **Express Book Reviews API**! This project is a modern, efficient
 - **Task 10**: [task10.png](path/to/task10.png) - Screenshot of book list fetching.
 - **Task 11**: [task11.png](path/to/task11.png) - Screenshot of book details fetching by ISBN.
 
-## 🔍 Contributing
-
-We welcome contributions from the community! If you have suggestions or improvements, please fork the repository and create a pull request.
-
 ## 📫 Contact
 
 For any inquiries or feedback, feel free to reach out:
 
-- **Email**: your.email@example.com
-- **LinkedIn**: [Your LinkedIn Profile](https://www.linkedin.com/in/yourprofile)
-- **GitHub**: [Your GitHub Profile](https://github.com/yourusername)
+- **Email**: anguzud7@gmail.com
+- **LinkedIn**: [Your LinkedIn Profile](https://www.linkedin.com/in/anguzu-daniel-7b793023a/)
+- **GitHub**: [Your GitHub Profile](https://github.com/anguzuDaniel)
 
 ## 📜 License
 
