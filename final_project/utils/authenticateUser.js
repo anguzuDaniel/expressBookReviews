@@ -5,9 +5,5 @@ exports.authenticatedUser = (username, password) => {
         return (user.username === username && user.password === password);
     });
     // Return true if any valid user is found, otherwise false
-    if (validusers.length > 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return validusers.length > 0;
 }

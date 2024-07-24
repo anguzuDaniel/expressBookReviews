@@ -5,9 +5,5 @@ exports.doesExist = (username) => {
         return user.username === username;
     });
     // Return true if any user with the same username is found, otherwise false
-    if (userswithsamename.length > 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return userswithsamename.length > 0;
 }

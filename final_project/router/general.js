@@ -32,25 +32,38 @@ public_users.post("/register", (req,res) => {
 
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
-
+  return res.status(200).json(JSON.stringify(books))
 });
 
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
+  const ISBN = req.body.isbn;
   //Write your code here
-  return res.status(300).json({message: "Yet to be implemented"});
+  return res.status(300).json({isbn: ISBN});
  });
   
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
-  //Write your code here
-  return res.status(300).json({message: "Yet to be implemented"});
+  const author = req.params.author.toLowerCase();
+  const booksByAuthor = Object.values(books).filter(book => book.author.toLowerCase() === author);
+  
+  if (booksByAuthor.length > 0) {
+    return res.status(200).json(booksByAuthor);
+  } else {
+    return res.status(404).json({ message: 'Author not found' });
+  }
 });
 
 // Get all books based on title
 public_users.get('/title/:title',function (req, res) {
-  //Write your code here
-  return res.status(300).json({message: "Yet to be implemented"});
+  const title = req.params.title.toLowerCase(); // Get the title from the request parameters and convert to lowercase for case-insensitive matching
+  const booksByTitle = Object.values(books).filter(book => book.title.toLowerCase() === title); // Filter books by title
+
+  if (booksByTitle.length > 0) {
+    return res.status(200).json(booksByTitle); // Return the filtered books
+  } else {
+    return res.status(404).json({message: "No book with the provided title found."}); // Return a 404 if the title is not found
+  }
 });
 
 //  Get book review
