@@ -12,35 +12,34 @@ public_users.post("/register", (req,res) => {
   const password = req.body.password;
 
   if (!username || !password) {
-    return res.status(404).json({message: "Error loggin in"});
+    return res.status(400).json({ message: "Username or & password required" });
   }
 
-  if (authenticatedUser(username, password)) {
-      let accessToken = jsonwebtoken.sign({
-        data: password
-      }, 'access', { expiresIn: 60 * 60 })
-
-      req.session.authorization = {
-        accessToken, username
-      }
-
-      return res.status(200).send("User successfully logged in");
-  } else {
-      return res.status(200).json({message: "Invalid Login. Check username and password"});
+  if (users[username]) {
+    return res.status(400).json({ message: "Username already exists" })
   }
+
+  // Register the new user
+  users.push({ username, password });
+  return res.status(201).json({ message: "User registered successfully" });
 });
 
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
-  return res.status(200).json(JSON.stringify(books))
+  return res.status(200).json(books)
 });
 
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
-  const ISBN = req.body.isbn;
-  //Write your code here
-  return res.status(300).json({isbn: ISBN});
- });
+  const ISBN = req.params.isbn;
+  const bookByISBN = books[ISBN];
+
+  if (bookByISBN) {
+    return res.status(200).json(bookByISBN);
+  } else {
+    return res.status(404).json({ message: 'No book found for ISBN'});
+  }
+});
   
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {

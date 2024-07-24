@@ -5,6 +5,7 @@ const customer_routes = require('./router/auth_users.js').authenticated;
 const genl_routes = require('./router/general.js').general;
 const doesExist = require("./utils/doesExit.js");
 const authenticatedUser = require("./utils/authenticateUser.js");
+const { users } = require('./router/auth_users.js');
 
 const app = express();
 
