@@ -73,7 +73,6 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
 // Delete a book review
 regd_users.delete("/auth/review/:isbn", (req, res) => {
   const isbn = req.params.isbn;
-  const review = req.body.review;
   const username = req.user.username;
 
   if (!books[isbn]) {
